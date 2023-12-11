@@ -4,4 +4,5 @@
     <string name="hint_scholarName">Scholar Name</string>
     <string name="hint_scholarGradeYear">Add Grade Year</string>
     <string name="menu_addScholar">Add</string>
+    <string name="menu_cancelScholar">Cancel</string>
 </resources>
