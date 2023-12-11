@@ -24,9 +24,13 @@ class ScholarActivity : AppCompatActivity() {
 
         binding.toolbarAdd.title = title
         setSupportActionBar(binding.toolbarAdd)
-
         app = application as ScholarApp
-        i("Scholar Activity started...")
+
+        if (intent.hasExtra("scholar_edit")) {
+            scholar = intent.extras?.getParcelable("scholar_edit")!!
+            binding.scholarName.setText(scholar.scholarName)
+            binding.gradeYear.setText(scholar.gradeYear)
+        }
 
         binding.btnAdd.setOnClickListener() {
             scholar.scholarName = binding.scholarName.text.toString()
@@ -47,7 +51,8 @@ class ScholarActivity : AppCompatActivity() {
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.item_cancel -> { finish() }
+            R.id.item_cancel -> {
+                finish() }
         }
         return super.onOptionsItemSelected(item)
     }

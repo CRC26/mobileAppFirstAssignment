@@ -16,11 +16,15 @@ class ScholarMemStore : ScholarStore {
     }
 
     override fun create(scholar: ScholarModel) {
-        scholars.add(scholar)
+        var foundScholar: ScholarModel? = scholars.find { p -> p.id == scholar.id }
+        if (foundScholar != null) {
+            foundScholar.scholarName = scholar.scholarName
+            foundScholar.gradeYear = scholar.gradeYear
         logAll()
     }
+}
 
-    fun logAll() {
+    private fun logAll() {
         scholars.forEach{ i("${it}") }
     }
 }

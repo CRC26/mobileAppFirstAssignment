@@ -61,6 +61,7 @@ class ScholarListActivity : AppCompatActivity(), ScholarListener {
         }
     override fun onScholarClick(scholar: ScholarModel) {
         val launcherIntent = Intent(this, ScholarActivity::class.java)
+        launcherIntent.putExtra("scholar_edit", scholar)
         getClickResult.launch(launcherIntent)
     }
 
