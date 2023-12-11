@@ -7,6 +7,7 @@ var lastId = 0L
 internal fun getId(): Long {
     return lastId++
 }
+
 class ScholarMemStore : ScholarStore {
 
     val scholars = ArrayList<ScholarModel>()
@@ -16,15 +17,21 @@ class ScholarMemStore : ScholarStore {
     }
 
     override fun create(scholar: ScholarModel) {
+        scholar.id = getId()
+        scholars.add(scholar)
+        logAll()
+    }
+
+    override fun update(scholar: ScholarModel) {
         var foundScholar: ScholarModel? = scholars.find { p -> p.id == scholar.id }
         if (foundScholar != null) {
             foundScholar.scholarName = scholar.scholarName
             foundScholar.gradeYear = scholar.gradeYear
-        logAll()
+            logAll()
+        }
     }
-}
 
     private fun logAll() {
-        scholars.forEach{ i("${it}") }
+        scholars.forEach { i("$it") }
     }
 }

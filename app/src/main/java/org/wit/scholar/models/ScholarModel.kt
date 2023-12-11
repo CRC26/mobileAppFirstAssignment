@@ -5,4 +5,4 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class ScholarModel(var id: Long = 0,
                         var scholarName: String = "",
-                        var gradeYear: String = ""): Parcelable
+                        var gradeYear: String = "") : Parcelable

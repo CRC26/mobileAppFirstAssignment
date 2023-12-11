@@ -24,7 +24,9 @@ class ScholarActivity : AppCompatActivity() {
 
         binding.toolbarAdd.title = title
         setSupportActionBar(binding.toolbarAdd)
+
         app = application as ScholarApp
+        i("Scholar Activity started...")
 
         if (intent.hasExtra("scholar_edit")) {
             scholar = intent.extras?.getParcelable("scholar_edit")!!
@@ -37,6 +39,7 @@ class ScholarActivity : AppCompatActivity() {
             scholar.gradeYear = binding.gradeYear.text.toString()
             if (scholar.scholarName.isNotEmpty()) {
                 app.scholars.create(scholar.copy())
+                i("add Button Pressed: ${scholar}")
                 setResult(RESULT_OK)
                 finish()
             } else {
