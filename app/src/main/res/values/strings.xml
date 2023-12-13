@@ -1,8 +1,13 @@
 <resources>
     <string name="app_name">scholar</string>
     <string name="button_addName">Add Name</string>
-    <string name="hint_scholarName">Scholar Name</string>
+    <string name="hint_scholarTitle">Scholar Name</string>
     <string name="hint_scholarGradeYear">Add Grade Year</string>
     <string name="menu_addScholar">Add</string>
     <string name="menu_cancelScholar">Cancel</string>
+    <string name="save_scholar"> Save Scholar </string>
+    <string name="button_addImage"> Add Image </string>
+    <string name="select_scholar_image">Select scholar image</string>
+    <string name="enter_scholar_title"> Please enter a Scholar Name </string>
+    <string name="change_scholar_image">Change scholar image</string>
 </resources>

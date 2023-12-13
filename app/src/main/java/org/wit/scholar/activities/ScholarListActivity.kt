@@ -15,7 +15,9 @@ import org.wit.scholar.databinding.ActivityScholarListBinding
 import org.wit.scholar.main.ScholarApp
 import org.wit.scholar.models.ScholarModel
 
+
 class ScholarListActivity : AppCompatActivity(), ScholarListener {
+
 
     lateinit var app: ScholarApp
     private lateinit var binding: ActivityScholarListBinding
@@ -31,7 +33,6 @@ class ScholarListActivity : AppCompatActivity(), ScholarListener {
 
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
-        //binding.recyclerView.adapter = ScholarAdapter(app.scholars)
         binding.recyclerView.adapter = ScholarAdapter(app.scholars.findAll(),this)
     }
 
@@ -56,9 +57,10 @@ class ScholarListActivity : AppCompatActivity(), ScholarListener {
         ) {
             if (it.resultCode == Activity.RESULT_OK) {
                 (binding.recyclerView.adapter)?.
-                notifyItemRangeChanged(0, app.scholars.findAll().size)
+                notifyItemRangeChanged(0,app.scholars.findAll().size)
             }
         }
+
     override fun onScholarClick(scholar: ScholarModel) {
         val launcherIntent = Intent(this, ScholarActivity::class.java)
         launcherIntent.putExtra("scholar_edit", scholar)

@@ -41,12 +41,12 @@
                 android:orientation="vertical">
 
                 <EditText
-                    android:id="@+id/scholarName"
+                    android:id="@+id/scholarTitle"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:layout_margin="8dp"
                     android:autofillHints="hint"
-                    android:hint="@string/hint_scholarName"
+                    android:hint="@string/hint_scholarTitle"
                     android:inputType="text"
                     android:maxLength="25"
                     android:maxLines="1"
@@ -66,6 +66,23 @@
                     android:padding="8dp"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="14sp" />
+                <Button
+                    android:id="@+id/chooseImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:background="@color/colorAccent"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:text="@string/button_addImage"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:id="@+id/scholarImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@mipmap/ic_launcher" />
 
                 <Button
                     android:id="@+id/btnAdd"
@@ -79,6 +96,9 @@
                     android:text="@string/button_addName"
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp" />
+
+
+
             </LinearLayout>
         </ScrollView>
 

@@ -2,6 +2,7 @@ package org.wit.scholar.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import com.squareup.picasso.Picasso
 import androidx.recyclerview.widget.RecyclerView
 import org.wit.scholar.databinding.CardScholarBinding
 import org.wit.scholar.models.ScholarModel
@@ -9,13 +10,15 @@ import org.wit.scholar.models.ScholarModel
 interface ScholarListener {
     fun onScholarClick(scholar: ScholarModel)
 }
+
 class ScholarAdapter constructor(private var scholars: List<ScholarModel>,
-                                 private val listener: ScholarListener) :
+                                   private val listener: ScholarListener) :
     RecyclerView.Adapter<ScholarAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
         val binding = CardScholarBinding
             .inflate(LayoutInflater.from(parent.context), parent, false)
+
         return MainHolder(binding)
     }
 
@@ -30,8 +33,9 @@ class ScholarAdapter constructor(private var scholars: List<ScholarModel>,
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(scholar: ScholarModel, listener: ScholarListener) {
-            binding.scholarName.text = scholar.scholarName
+            binding.scholarTitle.text = scholar.title
             binding.gradeYear.text = scholar.gradeYear
+            Picasso.get().load(scholar.image).resize(200,200).into(binding.imageIcon)
             binding.root.setOnClickListener { listener.onScholarClick(scholar) }
         }
     }

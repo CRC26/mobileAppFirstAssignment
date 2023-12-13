@@ -25,8 +25,9 @@ class ScholarMemStore : ScholarStore {
     override fun update(scholar: ScholarModel) {
         var foundScholar: ScholarModel? = scholars.find { p -> p.id == scholar.id }
         if (foundScholar != null) {
-            foundScholar.scholarName = scholar.scholarName
+            foundScholar.title = scholar.title
             foundScholar.gradeYear = scholar.gradeYear
+            foundScholar.image = scholar.image
             logAll()
         }
     }
