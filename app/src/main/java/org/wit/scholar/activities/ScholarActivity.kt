@@ -17,16 +17,17 @@ import org.wit.scholar.models.ScholarModel
 import org.wit.scholar.helpers.showImagePicker
 import timber.log.Timber.Forest.i
 
-class ScholarActivity : AppCompatActivity() {
+class ScholarActivity :  AppCompatActivity() {
 
     private lateinit var binding: ActivityScholarBinding
     var scholar = ScholarModel()
     lateinit var app: ScholarApp
     private lateinit var imageIntentLauncher : ActivityResultLauncher<Intent>
+    var edit = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        var edit = false
+        edit = true
 
         binding = ActivityScholarBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -34,7 +35,6 @@ class ScholarActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbarAdd)
 
         app = application as ScholarApp
-
         i("Scholar Activity started...")
 
         if (intent.hasExtra("scholar_edit")) {
@@ -79,17 +79,21 @@ class ScholarActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_scholar, menu)
+        if (edit) menu.getItem(0).isVisible = true
         return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.item_cancel -> {
+            R.id.item_delete -> {
+                setResult(99)
+                app.scholars.delete(scholar)
                 finish()
-            }
+            }        R.id.item_cancel -> { finish() }
         }
         return super.onOptionsItemSelected(item)
     }
+
 
     private fun registerImagePickerCallback() {
         imageIntentLauncher =

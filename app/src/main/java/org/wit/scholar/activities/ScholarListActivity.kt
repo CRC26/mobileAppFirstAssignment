@@ -21,6 +21,7 @@ class ScholarListActivity : AppCompatActivity(), ScholarListener {
 
     lateinit var app: ScholarApp
     private lateinit var binding: ActivityScholarListBinding
+    private var position: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,9 +62,10 @@ class ScholarListActivity : AppCompatActivity(), ScholarListener {
             }
         }
 
-    override fun onScholarClick(scholar: ScholarModel) {
+    override fun onScholarClick(scholar: ScholarModel, pos : Int) {
         val launcherIntent = Intent(this, ScholarActivity::class.java)
         launcherIntent.putExtra("scholar_edit", scholar)
+        position = pos
         getClickResult.launch(launcherIntent)
     }
 
@@ -75,8 +77,12 @@ class ScholarListActivity : AppCompatActivity(), ScholarListener {
                 (binding.recyclerView.adapter)?.
                 notifyItemRangeChanged(0,app.scholars.findAll().size)
             }
+            else // Deleting
+                if (it.resultCode == 99)     (binding.recyclerView.adapter)?.notifyItemRemoved(position)
         }
+
 }
+
 
 
 

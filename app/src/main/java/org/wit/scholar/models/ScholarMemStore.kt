@@ -35,4 +35,7 @@ class ScholarMemStore : ScholarStore {
     private fun logAll() {
         scholars.forEach { i("$it") }
     }
+    override fun delete(scholar: ScholarModel) {
+        scholars.remove(scholar)
+    }
 }

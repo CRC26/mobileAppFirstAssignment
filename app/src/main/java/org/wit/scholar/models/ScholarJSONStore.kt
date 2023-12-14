@@ -42,7 +42,15 @@ class ScholarJSONStore(private val context: Context) : ScholarStore {
 
 
     override fun update(scholar: ScholarModel) {
-        // todo
+        val scholarsList = findAll() as ArrayList<ScholarModel>
+        var foundScholar: ScholarModel? = scholars.find { p -> p.id == scholar.id }
+        if (foundScholar != null) {
+            foundScholar.title = scholar.title
+            foundScholar.gradeYear = scholar.gradeYear
+            foundScholar.image = scholar.image
+
+        }
+        serialize()
     }
 
     private fun serialize() {
@@ -57,6 +65,11 @@ class ScholarJSONStore(private val context: Context) : ScholarStore {
 
     private fun logAll() {
         scholars.forEach { Timber.i("$it") }
+    }
+
+    override fun delete(scholar: ScholarModel) {
+        scholars.remove(scholar)
+        serialize()
     }
 }
 
@@ -76,4 +89,6 @@ class UriParser : JsonDeserializer<Uri>,JsonSerializer<Uri> {
     ): JsonElement {
         return JsonPrimitive(src.toString())
     }
+
+
 }

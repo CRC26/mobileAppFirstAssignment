@@ -8,14 +8,14 @@
     android:elevation="24dp">
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="747dp"
+        android:layout_width="401dp"
+        android:layout_height="match_parent"
         android:padding="16dp">
 
         <ImageView
             android:id="@+id/imageIcon"
-            android:layout_width="112dp"
-            android:layout_height="117dp"
+            android:layout_width="97dp"
+            android:layout_height="84dp"
             android:layout_alignTop="@+id/scholarTitle"
             android:layout_marginTop="57dp"
             android:layout_marginEnd="16dp"
@@ -23,12 +23,12 @@
 
         <TextView
             android:id="@+id/scholarTitle"
-            android:layout_width="372dp"
+            android:layout_width="263dp"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="61dp"
-            android:layout_marginEnd="71dp"
+            android:layout_marginEnd="132dp"
             android:textSize="30sp"
             tools:text="A Title" />
 

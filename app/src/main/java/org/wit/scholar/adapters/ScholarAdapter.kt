@@ -8,7 +8,7 @@ import org.wit.scholar.databinding.CardScholarBinding
 import org.wit.scholar.models.ScholarModel
 
 interface ScholarListener {
-    fun onScholarClick(scholar: ScholarModel)
+    fun onScholarClick(scholar: ScholarModel, position: Int)
 }
 
 class ScholarAdapter constructor(private var scholars: List<ScholarModel>,
@@ -36,7 +36,7 @@ class ScholarAdapter constructor(private var scholars: List<ScholarModel>,
             binding.scholarTitle.text = scholar.title
             binding.gradeYear.text = scholar.gradeYear
             Picasso.get().load(scholar.image).resize(200,200).into(binding.imageIcon)
-            binding.root.setOnClickListener { listener.onScholarClick(scholar) }
+            binding.root.setOnClickListener { listener.onScholarClick(scholar, adapterPosition) }
         }
     }
 }
